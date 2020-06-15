@@ -1,0 +1,72 @@
+[
+  {
+    "TypeOfUser": "admin",
+    "Name": "Nelson",
+    "SurName": "Bush",
+    "company": "SCENTY",
+    "Email": "nelson.bush@emu.edu.tr}",
+    "OfficeTel": "+1 (979) 470-3322",
+    "Office": 518,
+    "Title": "Mr"
+  },
+  {
+    "TypeOfUser": "admin",
+    "Name": "Maynard",
+    "SurName": "Olsen",
+    "company": "SULFAX",
+    "Email": "maynard.olsen@emu.edu.tr}",
+    "OfficeTel": "+1 (980) 485-2289",
+    "Office": 938,
+    "Title": "Ms"
+  },
+  {
+    "TypeOfUser": "admin",
+    "Name": "Madge",
+    "SurName": "Tran",
+    "company": "SATIANCE",
+    "Email": "madge.tran@emu.edu.tr}",
+    "OfficeTel": "+1 (821) 475-3444",
+    "Office": 523,
+    "Title": "Mr"
+  },
+  {
+    "TypeOfUser": "guest",
+    "Name": "Gaines",
+    "SurName": "Wilkinson",
+    "company": "DELPHIDE",
+    "Email": "gaines.wilkinson@emu.edu.tr}",
+    "OfficeTel": "+1 (812) 423-3446",
+    "Office": 767,
+    "Title": "Mr"
+  },
+  {
+    "TypeOfUser": "admin",
+    "Name": "Catherine",
+    "SurName": "William",
+    "company": "QUALITEX",
+    "Email": "catherine.william@emu.edu.tr}",
+    "OfficeTel": "+1 (984) 535-3532",
+    "Office": 471,
+    "Title": "Mr"
+  },
+  {
+    "TypeOfUser": "assistant",
+    "Name": "Cortez",
+    "SurName": "Chapman",
+    "company": "DIGIAL",
+    "Email": "cortez.chapman@emu.edu.tr}",
+    "OfficeTel": "+1 (809) 423-3338",
+    "Office": 975,
+    "Title": "Ms"
+  },
+  {
+    "TypeOfUser": "instructor",
+    "Name": "Martinez",
+    "SurName": "Erickson",
+    "company": "PRIMORDIA",
+    "Email": "martinez.erickson@emu.edu.tr}",
+    "OfficeTel": "+1 (886) 537-3174",
+    "Office": 997,
+    "Title": "Mr"
+  }
+]
