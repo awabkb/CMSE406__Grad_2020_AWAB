@@ -4,14 +4,16 @@ using CMSE406_OutlineSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMSE406_OutlineSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200606190009_filesModelDataContext")]
+    partial class filesModelDataContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,6 +63,9 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.Property<string>("CourseDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CourseFilesid")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CourseLOCloCode")
                         .HasColumnType("int");
 
@@ -70,16 +75,16 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.Property<string>("CourseWebpage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Credits")
+                    b.Property<int>("Credits")
                         .HasColumnType("int");
 
                     b.Property<string>("Department")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Ects")
+                    b.Property<int>("Ects")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InstructorID")
+                    b.Property<int>("InstructorID")
                         .HasColumnType("int");
 
                     b.Property<string>("LabTimeCourseCode")
@@ -88,7 +93,7 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Rcode")
+                    b.Property<int>("Rcode")
                         .HasColumnType("int");
 
                     b.Property<string>("ReqOrElc")
@@ -101,6 +106,8 @@ namespace CMSE406_OutlineSystem.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("CourseCode");
+
+                    b.HasIndex("CourseFilesid");
 
                     b.HasIndex("CourseLOCloCode");
 
@@ -138,6 +145,83 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.HasIndex("AssessmentTypeAssessmentCode");
 
                     b.ToTable("CourseAssessments");
+                });
+
+            modelBuilder.Entity("CMSE406_OutlineSystem.Models.CourseFiles", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AssignmentsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BestWorstMedianFinalExamPapersId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BestWorstMedianMidterm1PapersId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BestWorstMedianMidterm2PapersId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CourseEvolutionDocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CourseSyllabusId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FinalExamWithSolutionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HomeworksId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LabSheetsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Midterm1WithSolutionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Midterm2WithSolutionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProjectsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuizWithSolutionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("AssignmentsId");
+
+                    b.HasIndex("BestWorstMedianFinalExamPapersId");
+
+                    b.HasIndex("BestWorstMedianMidterm1PapersId");
+
+                    b.HasIndex("BestWorstMedianMidterm2PapersId");
+
+                    b.HasIndex("CourseEvolutionDocId");
+
+                    b.HasIndex("CourseSyllabusId");
+
+                    b.HasIndex("FinalExamWithSolutionsId");
+
+                    b.HasIndex("HomeworksId");
+
+                    b.HasIndex("LabSheetsId");
+
+                    b.HasIndex("Midterm1WithSolutionsId");
+
+                    b.HasIndex("Midterm2WithSolutionsId");
+
+                    b.HasIndex("ProjectsId");
+
+                    b.HasIndex("QuizWithSolutionsId");
+
+                    b.ToTable("CourseFiles");
                 });
 
             modelBuilder.Entity("CMSE406_OutlineSystem.Models.CourseLO", b =>
@@ -255,21 +339,15 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.ToTable("CourseSemesterWeeklySchedules");
                 });
 
-            modelBuilder.Entity("CMSE406_OutlineSystem.Models.File", b =>
+            modelBuilder.Entity("CMSE406_OutlineSystem.Models.FileModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CourseCode")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DesId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -282,9 +360,7 @@ namespace CMSE406_OutlineSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseCode");
-
-                    b.ToTable("Files");
+                    b.ToTable("FileModels");
                 });
 
             modelBuilder.Entity("CMSE406_OutlineSystem.Models.Prerequisite", b =>
@@ -381,6 +457,10 @@ namespace CMSE406_OutlineSystem.Migrations
 
             modelBuilder.Entity("CMSE406_OutlineSystem.Models.Course", b =>
                 {
+                    b.HasOne("CMSE406_OutlineSystem.Models.CourseFiles", "CourseFiles")
+                        .WithMany()
+                        .HasForeignKey("CourseFilesid");
+
                     b.HasOne("CMSE406_OutlineSystem.Models.CourseLO", "CourseLO")
                         .WithMany()
                         .HasForeignKey("CourseLOCloCode");
@@ -405,6 +485,61 @@ namespace CMSE406_OutlineSystem.Migrations
                         .HasForeignKey("AssessmentTypeAssessmentCode");
                 });
 
+            modelBuilder.Entity("CMSE406_OutlineSystem.Models.CourseFiles", b =>
+                {
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "Assignments")
+                        .WithMany()
+                        .HasForeignKey("AssignmentsId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "BestWorstMedianFinalExamPapers")
+                        .WithMany()
+                        .HasForeignKey("BestWorstMedianFinalExamPapersId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "BestWorstMedianMidterm1Papers")
+                        .WithMany()
+                        .HasForeignKey("BestWorstMedianMidterm1PapersId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "BestWorstMedianMidterm2Papers")
+                        .WithMany()
+                        .HasForeignKey("BestWorstMedianMidterm2PapersId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "CourseEvolutionDoc")
+                        .WithMany()
+                        .HasForeignKey("CourseEvolutionDocId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "CourseSyllabus")
+                        .WithMany()
+                        .HasForeignKey("CourseSyllabusId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "FinalExamWithSolutions")
+                        .WithMany()
+                        .HasForeignKey("FinalExamWithSolutionsId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "Homeworks")
+                        .WithMany()
+                        .HasForeignKey("HomeworksId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "LabSheets")
+                        .WithMany()
+                        .HasForeignKey("LabSheetsId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "Midterm1WithSolutions")
+                        .WithMany()
+                        .HasForeignKey("Midterm1WithSolutionsId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "Midterm2WithSolutions")
+                        .WithMany()
+                        .HasForeignKey("Midterm2WithSolutionsId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "Projects")
+                        .WithMany()
+                        .HasForeignKey("ProjectsId");
+
+                    b.HasOne("CMSE406_OutlineSystem.Models.FileModel", "QuizWithSolutions")
+                        .WithMany()
+                        .HasForeignKey("QuizWithSolutionsId");
+                });
+
             modelBuilder.Entity("CMSE406_OutlineSystem.Models.CourseSemesterDetail", b =>
                 {
                     b.HasOne("CMSE406_OutlineSystem.Models.CourseAssessment", "CourseAssessment")
@@ -414,13 +549,6 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.HasOne("CMSE406_OutlineSystem.Models.CourseSemesterWeeklySchedule", "CourseSemesterWeeklySchedule")
                         .WithMany()
                         .HasForeignKey("CourseSemesterWeeklyScheduleId");
-                });
-
-            modelBuilder.Entity("CMSE406_OutlineSystem.Models.File", b =>
-                {
-                    b.HasOne("CMSE406_OutlineSystem.Models.Course", null)
-                        .WithMany("Files")
-                        .HasForeignKey("CourseCode");
                 });
 
             modelBuilder.Entity("CMSE406_OutlineSystem.Models.Prerequisite", b =>

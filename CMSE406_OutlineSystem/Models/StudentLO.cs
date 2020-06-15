@@ -9,7 +9,7 @@ namespace CMSE406_OutlineSystem.Models
     public class StudentLO
     {
         [Key]
-        public string SloCode { get; set; }
-        public string StudentLearningOutcomes { get; set; }
+        public int SloCode { get; set; }
+        public string StudentLearningOutcome { get; set; }
     }
 }

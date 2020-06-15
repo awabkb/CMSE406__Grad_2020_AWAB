@@ -13,6 +13,7 @@ namespace CMSE406_OutlineSystem.Controllers
 {
     [Authorize]
     [Route("[controller]")]
+    [ApiController]
     public class OutlineController : Controller
     {
         private readonly IRepo _repo;
@@ -39,7 +40,7 @@ namespace CMSE406_OutlineSystem.Controllers
                                     userFromRepo.FindAll(x=>x.TypeOfUser=="assistant"));
             return Ok(assistantsToReturn);
         }
-        [HttpGet("{id}", Name = "GetUser")]
+        [HttpGet("User/{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
@@ -49,6 +50,19 @@ namespace CMSE406_OutlineSystem.Controllers
 
             return Ok(userToReturn);
         }
+        [HttpGet("Courses/{userId}")]
+        public async Task<IActionResult> GetCourses(int userId)
+        {
+            var courses = await _repo.GetCourses(userId);
+            return Ok(courses);
+        }
+        [HttpGet("StudentLO")]
+        public async Task<IActionResult> GetStudentLO(){
+            var studentLO= await _repo.GetStudentLO();
+            return Ok(studentLO);
+
+        }
+        
 
     }
 }

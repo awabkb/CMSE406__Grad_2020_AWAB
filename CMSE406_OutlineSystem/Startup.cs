@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using CMSE406_OutlineSystem.Helpers;
 
 namespace CMSE406_OutlineSystem
 {
@@ -40,6 +41,7 @@ namespace CMSE406_OutlineSystem
             services.AddControllersWithViews();
             services.AddTransient<Seed>();
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IRepo, Repo>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
@@ -92,8 +94,8 @@ namespace CMSE406_OutlineSystem
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-
-            /*app.UseSpa(spa =>
+            /*
+            app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501

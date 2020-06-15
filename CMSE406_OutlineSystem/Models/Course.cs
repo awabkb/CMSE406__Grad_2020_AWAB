@@ -10,28 +10,30 @@ namespace CMSE406_OutlineSystem.Models
     {
         [Key]
         public string CourseCode { get; set; }
-        public int Rcode { get; set; }
-        public string Name { get; set; }
+#nullable enable
+        public int? Rcode { get; set; }
+        public string? Name { get; set; }
 
-        public IEnumerable<Prerequisite> Prerequisites { get; set; }
-        public string ReqOrElc { get; set; }
+        public IEnumerable<Prerequisite>? Prerequisites { get; set; }
+        public string? ReqOrElc { get; set; }
 
-        public IEnumerable<ClassTime> LectureTime { get; set; }
-        public ClassTime LabTime { get; set; }
-        public int Credits { get; set; }
+        public IEnumerable<ClassTime>? LectureTime { get; set; }
+        public ClassTime? LabTime { get; set; }
+        public int? Credits { get; set; }
 
-        public int Ects { get; set; }
-        public string Semester { get; set; }
-        public string Department { get; set; }
+        public int? Ects { get; set; }
+        public string? Semester { get; set; }
+        public string? Department { get; set; }
 
-        public string CourseDescription { get; set; }
+        public string? CourseDescription { get; set; }
 
         [Url]
-        public string CourseWebpage { get; set; }
+        public string? CourseWebpage { get; set; }
 
-        public CourseSemesterDetail CourseSemesterDetails { get; set; }
-        public CourseLO CourseLO { get; set; }
-
+        public CourseSemesterDetail? CourseSemesterDetails { get; set; }
+        public CourseLO? CourseLO { get; set; }
+        public int? InstructorID { get; set; }
+        public List<File>? Files { get; set; }
 
 
     }

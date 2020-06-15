@@ -13,7 +13,7 @@ namespace CMSE406_OutlineSystem.Helpers
         public AutoMapperProfiles() {
             CreateMap<User, UserForListDto>();
             CreateMap<User, UserForAssistantDto>();
-            
+            CreateMap<FileForCreationDto, File>();
                 
         }
 

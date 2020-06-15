@@ -4,14 +4,16 @@ using CMSE406_OutlineSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMSE406_OutlineSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200606200642_fileFinalChange")]
+    partial class fileFinalChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,16 +72,16 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.Property<string>("CourseWebpage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Credits")
+                    b.Property<int>("Credits")
                         .HasColumnType("int");
 
                     b.Property<string>("Department")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Ects")
+                    b.Property<int>("Ects")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InstructorID")
+                    b.Property<int>("InstructorID")
                         .HasColumnType("int");
 
                     b.Property<string>("LabTimeCourseCode")
@@ -88,7 +90,7 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Rcode")
+                    b.Property<int>("Rcode")
                         .HasColumnType("int");
 
                     b.Property<string>("ReqOrElc")
@@ -268,9 +270,6 @@ namespace CMSE406_OutlineSystem.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DesId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -284,7 +283,7 @@ namespace CMSE406_OutlineSystem.Migrations
 
                     b.HasIndex("CourseCode");
 
-                    b.ToTable("Files");
+                    b.ToTable("FileModels");
                 });
 
             modelBuilder.Entity("CMSE406_OutlineSystem.Models.Prerequisite", b =>
