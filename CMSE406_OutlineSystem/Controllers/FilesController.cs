@@ -55,10 +55,7 @@ namespace CMSE406_OutlineSystem.Controllers
         [HttpGet("{courseCode}",Name ="GetCourseFiles")]
         public async Task<IActionResult> GetAllFiles(int userId,string courseCode)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
-            if (!await _repo.CheckCourse(courseCode, int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))) return Unauthorized();
-            var filesToReturn = await _repo.GetCourseFiles(courseCode);
+           var filesToReturn = await _repo.GetCourseFiles(courseCode);
             return Ok(filesToReturn);
         }
         
@@ -93,7 +90,7 @@ namespace CMSE406_OutlineSystem.Controllers
 
             if(await _repo.SaveAll())
             {
-                return Ok("File Saved");
+                return Ok();
             }
             return BadRequest("Couldn't save the file");
 

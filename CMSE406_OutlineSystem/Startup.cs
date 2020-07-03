@@ -32,7 +32,7 @@ namespace CMSE406_OutlineSystem
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc().AddNewtonsoftJson(options =>
+            services.AddMvc(option => option.EnableEndpointRouting = false).AddNewtonsoftJson(options =>
             {
                 options
                     .SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -88,11 +88,20 @@ namespace CMSE406_OutlineSystem
             app.UseRouting();
             app.UseAuthorization();
 
+            /*
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+            });*/
+            app.UseDefaultFiles();
+            app.UseMvc(routes =>
+            {
+                routes.MapSpaFallbackRoute(
+                          name: "spa-fallback",
+                          defaults: new { controller = "Fallback", action = "Index" }
+                      );
             });
             /*
             app.UseSpa(spa =>
@@ -105,7 +114,7 @@ namespace CMSE406_OutlineSystem
                 if (env.IsDevelopment())
                 {
 
-                    //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                   // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
 
                     spa.UseAngularCliServer(npmScript: "start");
                 }
